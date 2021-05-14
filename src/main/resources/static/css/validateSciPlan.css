@@ -1,0 +1,61 @@
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+table {
+    max-width: 960px;
+    margin: 80px auto;
+}
+
+caption {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 12px 0;
+}
+
+thead th {
+    background: #0072ff;
+    color: #fff;
+    font-weight: initial;
+}
+
+tr { background: #f1f1f1; }
+
+tr:nth-child(2n) { background: #e0e0e0; }
+
+th, td {
+    text-align: left;
+    padding: 24px;
+}
+
+tfoot tr { background: none; }
+
+tfoot td {
+    padding: 12px 2px;
+    font-style: italic;
+    color: #8a97a0;
+}
+.content-box {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.heading-txt {
+    border-left: 6px solid #6846B7;
+    padding-left: 12px;
+}
+
+.font-5rem {
+    font-size: 5rem;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}

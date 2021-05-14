@@ -1,0 +1,25 @@
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+
+.content-box {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.heading-txt {
+    border-left: 6px solid #6846B7;
+    padding-left: 12px;
+}
+
+
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}

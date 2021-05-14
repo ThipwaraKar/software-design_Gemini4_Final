@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<title>Gemini4</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/createSciplan.css}"/>
+
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a th:href="@{/homePage}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+        <a th:href="@{Astronomer/createSciPlan}" class="w3-bar-item w3-button w3-padding-large w3-white">Create Science Plan</a>
+        <a th:href="@{/logout}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-red">log out</a>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-blue w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">Gemini4</h1>
+
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container" >
+    <div class="w3-content" >
+
+        <form action="http://localhost:8080/submitSciPlan" method="POST" class="form-signin">
+            <div class="input-group form-group" >
+                <label>Creator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" id="creator" name="creator" placeholder="Creator" style="margin: 20px" size="90" class="form-control"/>
+            </div>
+            <div class="input-group form-group">
+                <label>Funding in USD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" id="funding" name="funding" placeholder="Funding in USD" style="margin: 20px" size="90" class="form-control"/>
+            </div>
+            <div class="input-group form-group">
+                <label>Objective &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" id="objective" name="objective" placeholder="Objective" style="margin: 20px" size="90" class="form-control"/>
+            </div>
+            <div class="input-group form-group">
+                <label>Stars System &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&nbsp;</label>
+                <select name="starsSystemInput" id="starsSystemInput">
+                    <th:block th:each="star: ${allStars}">
+                        <option th:value="${star.engName}" th:label="${star}" />
+                    </th:block>
+                </select>
+            </div>
+            <div class="input-group form-group">
+                <label>Start Date &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;</label>
+                <input type="datetime-local" id="startDate" name="startDate" style="margin: 20px" />
+            </div>
+            <div class="input-group form-group">
+                <label>End Date &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="datetime-local" id="endDate" name="endDate" style="margin: 20px" />
+            </div>
+            <div class="input-group form-group">
+                <label>Location &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                <input type="text" id="location" name="location" placeholder="Location" style="margin: 20px" size="90" class="form-control"/>
+                <p style="color: #FF1C19">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    (for example. chile / hawaii)</p>
+            </div>
+
+<!--                <div class="input-group form-group">-->
+<!--                    <label>Location&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;</label>-->
+<!--                    <select style="width: 665px; height: 30px;margin: 20px;" id="location" name="Location">-->
+<!--                        <option value="chile">chile</option>-->
+<!--                        <option value="hawaii">hawaii</option>-->
+
+<!--                    </select>-->
+<!--                </div>-->
+
+                            <div class="input-group form-group">
+                                <label><b>Data Processing Attribute &nbsp;</b></label>
+                                <div class="input-group form-group">
+                                    <label>&emsp;&emsp;&emsp;File Type&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;</label>
+                                    <select style="width: 665px; height: 30px;margin: 20px;" id="fileType" name="fileType">
+                                        <option value="PNG">PNG</option>
+                                        <option value="JPEG">JPEG</option>
+                                        <option value="RAW">RAW</option>
+                                    </select>
+                                </div>
+                                <div class="input-group form-group">
+                                    <label>&emsp;&emsp;&emsp;File Quality&emsp;&emsp;&emsp;&emsp;</label>
+                                    <select style="width: 665px; height: 30px;margin: 20px;" id="quality" name="quality">
+                                        <option value="Low">Low</option>
+                                        <option value="Fine">Fine</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label>&emsp;&emsp;&emsp;Image Processing</label>
+                                    <div class="input-group form-group">
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;Color Type&emsp;</label>
+                                            <select style="width: 665px; height: 30px;margin: 20px;" id="colorType" name="colorType">
+                                                <option value="bw">B&W mode</option>
+                                                <option value="color">Color mode</option>
+<!--                                                <option value="color">RGB</option>-->
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Contrast&emsp;&emsp;&nbsp;</label>
+                                            <input type="double" id="contrast" name="contrast" placeholder="both Color and B&W modes" style="margin: 20px" size="90" class="form-control"/>
+                                        </div>
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Brightness&emsp;&nbsp;&nbsp;</label>
+                                            <input type="double" id="brightness" name="brightness" placeholder="(only for color mode)" style="margin: 20px" size="90" class="form-control"/>
+                                        </div>
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Saturation&emsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <input type="double" id="saturation" name="saturation" placeholder="(only for color mode)" style="margin: 20px" size="90" class="form-control"/>
+                                        </div>
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Highlights&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <input type="double" id="highlights" name="highlights" placeholder="(only for B&W mode)" style="margin: 20px" size="90" class="form-control"/>
+                                        </div>
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Exposure&nbsp;&nbsp;&nbsp;&emsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <input type="double" id="exposure" name="exposure" placeholder="both Color and B&W modes" style="margin: 20px" size="90" class="form-control"/>
+                                        </div>
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Shadows&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <input type="double" id="shadows" name="shadows" placeholder="(only for B&W mode)" style="margin: 20px" size="90" class="form-control"/>
+                                        </div>
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Whites&emsp;&nbsp;&nbsp;&nbsp;&emsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <input type="double" id="whites" name="whites" placeholder="(only for B&W mode)" style="margin: 20px" size="90" class="form-control"/>
+                                        </div>
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Blacks&emsp;&nbsp;&nbsp;&nbsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <input type="double" id="blacks" name="blacks" placeholder="(only for B&W mode)" style="margin: 20px" size="90" class="form-control"/>
+                                        </div>
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Luminance&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <input type="double" id="luminance" name="luminance" placeholder="(only for color mode)" style="margin: 20px" size="90" class="form-control"/>
+                                        </div>
+                                        <div>
+                                            <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Hue&emsp;&nbsp;&nbsp;&nbsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&nbsp;</label>
+                                            <input type="double" id="hue" name="hue" placeholder="(only for color mode)" style="margin: 20px" size="90" class="form-control"/>
+                                        </div>
+                                        <div class="input-group form-group">
+                                        <label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Submitter &emsp;&emsp;</label>
+                                        <input type="text" id="submitter" name="submitter" placeholder="Submitter" style="margin: 20px" size="90" class="form-control"/>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+            <div align="center" class="input-group form-group">
+                <button class="btn btn-lg btn-primary btn-warning " name="SaveSciPlan" style="margin: 50px" value="Save" type="Submit"
+                        th:text="Save"></button>
+            </div>
+        </form>
+
+
+        <div class="w3-third w3-center">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<title>Gemini4</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/css/validateResult.css}"/>
+
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a th:href="@{/homePage}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+        <!--     <a th:href="@{Astronomer/createSciPlan}" class="w3-bar-item w3-button w3-padding-large w3-white">Create Science Plan</a>-->
+        <a th:href="@{/SciObserver/validateSciPlan}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Validate Science Plan</a>
+        <!--    <a th:href="@{SciObserver/collectAstrData}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Collect Astronomical Data</a>-->
+
+        <a th:href="@{/logout}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-red">log out</a>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-blue w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">Gemini4</h1>
+
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <main role="main" >
+            <div class="row">
+                <div class="col content-box">
+                    <h1 class="heading-txt">Validate Science Plan: Plan no. <span th:text="${id}"></span></h1>
+                    <h5 class="heading-txt">status: <span th:text="${status}"></span> </h5>
+                    <a th:href="@{/SciObserver/validateSciPlan}"><< Back</a>
+                </div>
+            </div>
+        </main>
+    </div> <!-- row -->
+    <!-- For each science plan -->
+
+</div>
+</body>
+
+</html>
